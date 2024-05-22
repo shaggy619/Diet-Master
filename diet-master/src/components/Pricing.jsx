@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TbCircleCheckFilled } from "react-icons/tb";
+import { Link, useLocation } from "react-router-dom";
 
 const Pricing = () => {
+  const location = useLocation();
+  const isStandAlonePage = location.pathname === "/pricing";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
-    <section className="relative z-10 overflow-hidden bg-white pt-20  lg:pt-[120px]">
-      <div className="max-w-[90%] mx-auto">
+    <section
+      className={`relative z-10 overflow-hidden bg-white p-4 ${
+        isStandAlonePage ? "pt-44" : "pt-20 lg:pt-[120px]"
+      }`}
+    >
+      <div className="max-w-[90%] mx-auto p-4">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <div className="mx-auto mb-[60px] max-w-[510px] text-center">
@@ -89,7 +101,7 @@ const PricingCard = ({
   return (
     <>
       <div className="px-4 md:w-1/2 lg:w-1/3">
-        <div className="relative z-10 mb-10 overflow-hidden rounded-[10px] border-2 border-stroke bg-white px-8 py-10 shadow-pricing dark:border-dark-3 dark:bg-dark-2 sm:p-12 lg:px-6 lg:py-10 xl:p-[50px] max-sm:max-w-[90%] mx-auto ">
+        <div className="relative z-10 mb-10 overflow-hidden rounded-[10px] border-2 border-stroke bg-white px-6 py-10 shadow-pricing sm:p-12 lg:py-10 xl:p-[50px]  mx-auto ">
           <span className="mb-3 block text-lg font-semibold text-primary">
             {type}
           </span>
@@ -103,8 +115,8 @@ const PricingCard = ({
             {description}
           </p>
           <div className="mb-9 flex flex-col gap-[14px]">{children}</div>
-          <a
-            href="/#"
+          <Link
+            to="/book-appointment"
             className={` ${
               active
                 ? "block w-full rounded-md border border-primary bg-primary p-3 text-center text-base font-medium text-white transition hover:bg-secondary"
@@ -112,7 +124,7 @@ const PricingCard = ({
             } `}
           >
             {buttonText}
-          </a>
+          </Link>
           <div>
             <span className="absolute right-0 top-7 z-[-1]">
               <svg
@@ -382,7 +394,7 @@ const PricingCard = ({
 const List = ({ children }) => {
   return (
     <div className="flex items-center gap-2">
-      <TbCircleCheckFilled className="text-primary" />
+      <TbCircleCheckFilled className="text-primary max-sm:hidden" />
       <p className="text-base text-body-color dark:text-dark-6">{children}</p>
     </div>
   );

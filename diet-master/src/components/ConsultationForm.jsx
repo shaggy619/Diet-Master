@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const ConsultationForm = () => {
   const [plan, setPlan] = useState("One Time");
@@ -10,18 +12,24 @@ const ConsultationForm = () => {
 
     switch (selectedPlan) {
       case "One Time":
-        setPrice("$56");
+        setPrice("$19");
         break;
       case "Single Consultation":
-        setPrice("$78");
+        setPrice("$29");
         break;
       case "Multiple Consultation":
-        setPrice("$99");
+        setPrice("$49");
         break;
       default:
-        setPrice("$56");
+        setPrice("$16");
     }
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <div className="flex items-center justify-center p-12 pt-48 max-md:pt-40 max-sm:px-6">

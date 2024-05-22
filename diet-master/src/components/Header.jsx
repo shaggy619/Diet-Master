@@ -12,6 +12,11 @@ const Header = () => {
     setIsDropdownOpen(false);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+    setIsDropdownOpen(false);
+  };
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -44,7 +49,11 @@ const Header = () => {
         onMouseLeave={() => setIsDropdownOpen(false)}
       >
         <div className="container mx-auto flex justify-between items-center p-4 max-w-[90%]">
-          <Link to="/" className="text-2xl font-medium text-primary">
+          <Link
+            to="/"
+            className="text-2xl font-medium text-primary"
+            onClick={closeMenu}
+          >
             Diet Master
           </Link>
           <div className="hidden lg:flex space-x-6 items-center relative">
@@ -67,7 +76,7 @@ const Header = () => {
                     Weight Loss Program
                   </Link>
                   <Link
-                    to="/body-diet-chart"
+                    to="/healthy-body-diet-chart"
                     className="block text-gray-800 hover:text-primary p-2"
                   >
                     Healthy Body Diet Chart
@@ -81,30 +90,20 @@ const Header = () => {
                 </div>
               )}
             </div>
-            <Link
-              to="/pricing"
-              href="#healthy-body"
-              className="text-gray-800 hover:text-primary"
-            >
+            <Link to="/pricing" className="text-gray-800 hover:text-primary">
               Subscription
             </Link>
-            <Link
-              to="/contact-us"
-              href="#medical-requirements"
-              className="text-gray-800 hover:text-primary"
-            >
+            <Link to="/contact-us" className="text-gray-800 hover:text-primary">
               Contact Us
             </Link>
             <Link
-              to="book-appointment"
-              href="#subscription"
+              to="/book-appointment"
               className="text-white border border-transparent bg-primary px-6 py-3 rounded hover:bg-secondary"
             >
               Book Appointment
             </Link>
             <Link
-              to="doctor-review"
-              href="#subscription"
+              to="/doctor-review"
               className="text-primary border border-primary bg-transparent px-6 py-3 rounded transition hover:border-primary hover:bg-primary hover:text-white"
             >
               Register Patient
@@ -144,61 +143,68 @@ const Header = () => {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="flex items-center gap-1 hover:text-primary hover:cursor-pointer text-gray-800 p-4"
             >
-              <a href="#weight-loss">Categories</a>
+              <span>Categories</span>
               <span className={`transform ${iconClass} transition-transform`}>
                 <IoChevronUpOutline />
               </span>
             </div>
             {isDropdownOpen && (
               <div className="pl-4">
-                <a
-                  href="#sub-link1"
+                <Link
+                  to="/weight-loss"
                   className="block text-gray-800 hover:text-primary p-4"
+                  onClick={closeMenu}
                 >
                   Weight Loss Program
-                </a>
-                <a
-                  href="#sub-link2"
+                </Link>
+                <Link
+                  to="/healthy-body-diet-chart"
                   className="block text-gray-800 hover:text-primary p-4"
+                  onClick={closeMenu}
                 >
                   Healthy Body Diet Chart
-                </a>
-                <a
-                  href="#sub-link3"
+                </Link>
+                <Link
+                  to="/medical-diet-chart"
                   className="block text-gray-800 hover:text-primary p-4"
+                  onClick={closeMenu}
                 >
                   Medical Diet Chart
-                </a>
+                </Link>
               </div>
             )}
           </div>
-          <a
-            href="#healthy-body"
+          <Link
+            to="/pricing"
             className="block text-gray-800 hover:text-primary p-4"
+            onClick={closeMenu}
           >
             Subscription
-          </a>
-          <a
-            href="#medical-requirements"
+          </Link>
+          <Link
+            to="/contact-us"
             className="block text-gray-800 hover:text-primary p-4"
+            onClick={closeMenu}
           >
             Contact Us
-          </a>
+          </Link>
           <div className="p-4 pt-8">
-            <a
-              href="#subscription"
+            <Link
+              to="/book-appointment"
               className="text-white border border-transparent bg-primary px-6 py-3 rounded hover:bg-secondary"
+              onClick={closeMenu}
             >
               Book Appointment
-            </a>
+            </Link>
           </div>
           <div className="p-4 pt-8">
-            <a
-              href="#subscription"
+            <Link
+              to="/doctor-review"
               className="text-primary border border-primary bg-white px-6 py-3 rounded hover:bg-secondary"
+              onClick={closeMenu}
             >
               Register Patient
-            </a>
+            </Link>
           </div>
         </div>
       </nav>

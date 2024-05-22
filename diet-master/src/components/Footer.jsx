@@ -1,6 +1,7 @@
 import React from "react";
 import Divider from "./Divider";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -20,16 +21,16 @@ const Footer = () => {
               <h3 className="text-xl font-semibold mb-2">Quick Links</h3>
               <ul>
                 <li className="pb-2">
-                  <a href="#weight-loss">Weight Loss Program</a>
+                  <Link to="/weight-loss">Weight Loss Program</Link>
                 </li>
                 <li className="pb-2">
-                  <a href="#healthy-body">Healthy Body Diet Chart</a>
+                  <Link to="/body-diet-chart">Healthy Body Diet Chart</Link>
                 </li>
                 <li className="pb-2">
-                  <a href="#medical-requirements">Medical Diet Charts</a>
+                  <Link to="/medical-diet-chart">Medical Diet Charts</Link>
                 </li>
                 <li>
-                  <a href="#subscription">Subscription</a>
+                  <Link to="/pricing">Subscription</Link>
                 </li>
               </ul>
             </div>
@@ -37,16 +38,14 @@ const Footer = () => {
               <h3 className="text-xl font-semibold mb-2">Resources</h3>
               <ul>
                 <li className="pb-2">
-                  <a href="#blog">Blog</a>
+                  <Link to="/blog">Blog</Link>
                 </li>
                 <li className="pb-2">
-                  <a href="#faq">FAQ</a>
+                  <Link to="/faq">FAQ</Link>
                 </li>
-                <li className="pb-2">
-                  <a href="#testimonials">Testimonials</a>
-                </li>
+
                 <li>
-                  <a href="#support">Support</a>
+                  <Link to="/contact-us">Support</Link>
                 </li>
               </ul>
             </div>
@@ -56,16 +55,16 @@ const Footer = () => {
               <p>Email: support@dietmaster.com</p>
               <p>Address: Ghorahi, Dang</p>
               <div className="flex space-x-3 pt-3 md:mt-0 items-center">
-                <a href="#" className=" text-2xl">
+                <a href="#" target="_blank" className=" text-2xl">
                   <FaFacebook />
                 </a>
-                <a href="#" className=" text-2xl">
+                <a href="#" target="_blank" className=" text-2xl">
                   <FaTwitter />
                 </a>
-                <a href="#" className=" text-2xl">
+                <a href="#" target="_blank" className=" text-2xl">
                   <FaInstagram />
                 </a>
-                <a href="#" className=" text-2xl">
+                <a href="#" target="_blank" className=" text-2xl">
                   <FaYoutube />
                 </a>
               </div>

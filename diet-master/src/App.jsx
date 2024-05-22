@@ -8,6 +8,10 @@ import Doctor from "./components/Doctor";
 import BulkRegistration from "./components/BulkRegistration";
 import Pricing from "./components/Pricing";
 import Story from "./components/Story";
+import MedicalDietChart from "./components/MedicalDietChart";
+import Contact from "./components/Contact-Us";
+import ErrorPage from "./components/ErrorPage";
+import DietChart from "./components/DietChart";
 
 function App() {
   return (
@@ -21,6 +25,15 @@ function App() {
         <Route exact path="/admin" element={<BulkRegistration />} />
         <Route exact path="/pricing" element={<Pricing />} />
         <Route exact path="/weight-loss" element={<Story />} />
+        <Route exact path="/healthy-body-diet-chart" element={<DietChart />} />
+        <Route
+          exact
+          path="/medical-diet-chart"
+          element={<MedicalDietChart />}
+        />
+        <Route exact path="/contact-us" element={<Contact />} />
+
+        <Route exact path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

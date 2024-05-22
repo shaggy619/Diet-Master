@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Story = () => {
   const features1 = [
@@ -14,11 +16,20 @@ const Story = () => {
     "Maintenance tools and knowledge",
   ];
 
+  const location = useLocation();
+  const isStandAlonePage = location.pathname === "/weight-loss";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   const renderFeatureList = (features) =>
     features.map((feature, index) => (
       <li key={index} className="flex space-x-3">
         <svg
-          className="flex-shrink-0 w-5 h-5 text-green-500 bg-white  rounded-full "
+          className={`flex-shrink-0 w-5 h-5 ${
+            isStandAlonePage ? "text-primary" : "text-white"
+          }    rounded-full `}
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +40,11 @@ const Story = () => {
             clipRule="evenodd"
           ></path>
         </svg>
-        <span className="text-base font-medium leading-tight text-white">
+        <span
+          className={`text-base font-medium leading-tight ${
+            isStandAlonePage ? "text-dark" : "text-white"
+          }`}
+        >
           {feature}
         </span>
       </li>
@@ -37,26 +52,21 @@ const Story = () => {
 
   return (
     <div>
-      <div className="w-full overflow-hidden leading-none">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="w-[150%] max-sm:w-[200%] h-[80px]"
-        >
-          <path
-            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-            className="fill-primary"
-          ></path>
-        </svg>
-      </div>
-
-      <section className="bg-primary">
+      <section
+        className={`${isStandAlonePage ? "bg-white pt-36" : "bg-primary"} `}
+      >
         <div className="max-w-[90%] px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 ">
           <div className="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
-            <div className="text-gray-200 sm:text-lg ">
-              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-white">
+            <div
+              className={`sm:text-lg ${
+                isStandAlonePage ? "text-dark" : "text-gray-200"
+              }`}
+            >
+              <h2
+                className={`mb-4 text-3xl font-extrabold tracking-tight ${
+                  isStandAlonePage ? "text-dark" : "text-white"
+                }`}
+              >
                 Weight loss program that works
               </h2>
               <p className="mb-8 font-light lg:text-xl">
@@ -90,8 +100,16 @@ const Story = () => {
               src="img/img3.png"
               alt="Weight loss 2nd image"
             />
-            <div className="text-gray-200 sm:text-lg ">
-              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-white">
+            <div
+              className={`sm:text-lg ${
+                isStandAlonePage ? "text-dark" : "text-gray-200"
+              } `}
+            >
+              <h2
+                className={`mb-4 text-3xl font-extrabold tracking-tight ${
+                  isStandAlonePage ? "text-dark" : "text-white"
+                }`}
+              >
                 Your Partner in Sustainable Weight Loss
               </h2>
               <p className="mb-8 font-light lg:text-xl">
@@ -104,7 +122,7 @@ const Story = () => {
 
               <ul
                 role="list"
-                className="pt-8 space-y-5 border-t border-gray-200 my-7"
+                className="pt-8 space-y-5 border-t border-gray-400 my-7"
               >
                 {renderFeatureList(features2)}
               </ul>
@@ -114,12 +132,16 @@ const Story = () => {
             </div>
           </div>
           <div className="text-center">
-            <a
-              href="#"
-              className="border-2 border-white text-white px-8 py-3 font-medium rounded text-lg transition hover:bg-white hover:text-primary"
+            <Link
+              to="/book-appointment"
+              className={`px-8 py-3 font-medium rounded text-lg border-2 transition ${
+                isStandAlonePage
+                  ? "border-transparent bg-primary text-white hover:bg-secondary"
+                  : "  border-white text-white hover:bg-white hover:text-primary"
+              } `}
             >
               Get Started
-            </a>
+            </Link>
           </div>
         </div>
       </section>

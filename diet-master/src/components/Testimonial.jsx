@@ -2,7 +2,7 @@ import React from "react";
 
 const Testimonial = () => {
   return (
-    <section className="relative ">
+    <section className="relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20">
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
@@ -269,7 +269,7 @@ const Testimonial = () => {
               <div className="text-center px-12 py-8 pt-20 mx-4 md:mx-0 relative max-sm:px-4">
                 <div className="absolute top-0 left-0 w-full flex justify-center">
                   <img
-                    src="img/trump.jpg"
+                    src="img/who.jpg"
                     alt="Trump Budo"
                     className="rounded-full w-36 h-36 max-sm:w-30 max-sm:h-30 transform -translate-y-1/2 object-cover border-2 bg-white p-1 border-primary"
                   />
@@ -282,10 +282,10 @@ const Testimonial = () => {
                   feedback constantly."
                 </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1 text-primary">
-                  Donald Trump
+                  Tedros Adhanom Ghebreyesus
                 </cite>
                 <div className="text-gray-600">
-                  <span>45th U.S. President</span>
+                  <span>WHO, Director General</span>
                 </div>
               </div>
             </div>

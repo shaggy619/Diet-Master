@@ -7,12 +7,8 @@ export default {
         jost: ["Jost", "sans-serif"],
       },
       colors: {
-        primary: {
-          DEFAULT: "#5f22d9",
-        },
-        secondary: {
-          DEFAULT: "#2c016d",
-        },
+        primary: "#5f22d9",
+        secondary: "#2c016d",
       },
     },
   },

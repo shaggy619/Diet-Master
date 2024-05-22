@@ -1,10 +1,10 @@
 import React from "react";
 import Hero from "./Hero";
 import Featured from "./Feature";
-import WeightLossProgram from "./WeightLose";
 import Testimonials from "./Testimonial";
 import Pricing from "./Pricing";
 import Story from "./Story";
+import StoryDivider from "./StoryDivider";
 
 const Home = () => {
   return (
@@ -12,8 +12,8 @@ const Home = () => {
       <div className="min-h-screen">
         <Hero />
         <Featured />
+        <StoryDivider />
         <Story />
-        <WeightLossProgram />
         <Pricing />
         <Testimonials />
       </div>
