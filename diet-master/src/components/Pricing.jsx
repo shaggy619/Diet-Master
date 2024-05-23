@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { TbCircleCheckFilled } from "react-icons/tb";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeIn } from "./varients";
 
 const Pricing = () => {
   const location = useLocation();
@@ -18,7 +20,13 @@ const Pricing = () => {
     >
       <div className="max-w-[90%] mx-auto p-4">
         <div className="-mx-4 flex flex-wrap">
-          <div className="w-full px-4">
+          <motion.div
+            variants={fadeIn("down", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.2 }}
+            className="w-full px-4"
+          >
             <div className="mx-auto mb-[60px] max-w-[510px] text-center">
               <span className="mb-2 block text-lg font-semibold text-primary">
                 Pricing Table
@@ -32,11 +40,17 @@ const Pricing = () => {
                 your goals effectively and sustainably.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="-mx-4 flex flex-wrap justify-center">
-          <div className="-mx-4 flex flex-wrap">
+          <motion.div
+            variants={fadeIn("up", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.2 }}
+            className="-mx-4 flex flex-wrap"
+          >
             <PricingCard
               type="One Time Diet Plan"
               price="$19"
@@ -80,7 +94,7 @@ const Pricing = () => {
               <List>Use for multiple dietary goals</List>
               <List>1 year support</List>
             </PricingCard>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

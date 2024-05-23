@@ -12,6 +12,7 @@ import MedicalDietChart from "./components/MedicalDietChart";
 import Contact from "./components/Contact-Us";
 import ErrorPage from "./components/ErrorPage";
 import DietChart from "./components/DietChart";
+import Faq from "./components/Faq";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           element={<MedicalDietChart />}
         />
         <Route exact path="/contact-us" element={<Contact />} />
-
+        <Route exact path="/faq" element={<Faq />} />
         <Route exact path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />

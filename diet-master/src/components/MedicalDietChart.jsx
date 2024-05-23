@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { TbCircleCheckFilled } from "react-icons/tb";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeIn } from "./varients";
 
 const MedicalDietChart = () => {
   useEffect(() => {
@@ -58,14 +60,33 @@ const MedicalDietChart = () => {
 
   return (
     <div className="w-[90%] mx-auto pt-44 p-4">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+      <motion.h2
+        variants={fadeIn("down", 0.2)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.2 }}
+        className="text-3xl md:text-4xl font-bold text-center mb-10"
+      >
         Diet Chart For Medical Requirements
-      </h2>
+      </motion.h2>
       {dietData.map((item, index) => (
         <div key={index} className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">{item.condition}</h2>
-          <p className="text-lg mb-4">{item.definition}</p>
-          <table className="w-full">
+          <motion.div
+            variants={fadeIn("up", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <h2 className="text-2xl font-semibold mb-2">{item.condition}</h2>
+            <p className="text-lg mb-4">{item.definition}</p>
+          </motion.div>
+          <motion.table
+            variants={fadeIn("right", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.7 }}
+            className="w-full"
+          >
             <thead>
               <tr className="bg-gray-200">
                 <th className="border px-4 py-2">Food Items</th>
@@ -84,10 +105,16 @@ const MedicalDietChart = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </motion.table>
         </div>
       ))}
-      <div className="flex justify-center items-center mt-6">
+      <motion.div
+        variants={fadeIn("up", 0.2)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.2 }}
+        className="flex justify-center items-center mt-6"
+      >
         <Link
           to="/"
           className="group text-primary border border-transparent bg-white  rounded hover:underline flex gap-2 items-center"
@@ -95,7 +122,7 @@ const MedicalDietChart = () => {
           <FaArrowLeft className="transform transition-transform duration-300 group-hover:-translate-x-1" />
           Back To Homepage
         </Link>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -3,6 +3,8 @@ import { ImSpoonKnife } from "react-icons/im";
 import { FaWeightScale } from "react-icons/fa6";
 import { LuHeartPulse } from "react-icons/lu";
 import { FaWalking } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { fadeIn } from "./varients";
 
 const features = [
   {
@@ -39,7 +41,13 @@ const Feature = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
           Featured Services
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div
+          variants={fadeIn("right", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {features.map((feature, index) => (
             <div key={index} className="flex flex-col items-center">
               <div className="bg-primary text-white p-4 rounded-full shadow-lg text-3xl transition-transform duration-300 transform hover:scale-110">
@@ -51,7 +59,7 @@ const Feature = () => {
               <p className="text-gray-700 text-center">{feature.description}</p>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

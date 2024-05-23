@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeIn } from "./varients";
 
 const ConsultationForm = () => {
   const [plan, setPlan] = useState("One Time");
@@ -34,10 +36,22 @@ const ConsultationForm = () => {
   return (
     <div className="flex items-center justify-center p-12 pt-48 max-md:pt-40 max-sm:px-6">
       <div className="mx-auto w-full max-w-[550px] bg-white">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
+        <motion.h2
+          variants={fadeIn("down", 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.7 }}
+          className="text-3xl md:text-4xl font-bold text-center mb-10"
+        >
           Book Appointment
-        </h2>
-        <form className="shadow border border-stroke p-12 rounded max-sm:px-8">
+        </motion.h2>
+        <motion.form
+          variants={fadeIn("up", 0.3)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.2 }}
+          className="shadow border border-stroke p-12 rounded max-sm:px-8"
+        >
           <div className="mb-5">
             <label className="mb-5 block text-base font-semibold text-primary sm:text-xl">
               Subscription Details
@@ -228,7 +242,7 @@ const ConsultationForm = () => {
               Book Appointment
             </button>
           </div>
-        </form>
+        </motion.form>
       </div>
     </div>
   );

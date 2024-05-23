@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeIn } from "./varients";
 
 const Story = () => {
   const features1 = [
@@ -56,7 +58,13 @@ const Story = () => {
         className={`${isStandAlonePage ? "bg-white pt-36" : "bg-primary"} `}
       >
         <div className="max-w-[90%] px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 ">
-          <div className="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
+          <motion.div
+            variants={fadeIn("left", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.2 }}
+            className="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16"
+          >
             <div
               className={`sm:text-lg ${
                 isStandAlonePage ? "text-dark" : "text-gray-200"
@@ -92,9 +100,15 @@ const Story = () => {
               src="img/img2.png"
               alt="Weight loss image"
             />
-          </div>
+          </motion.div>
 
-          <div className="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
+          <motion.div
+            variants={fadeIn("up", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.2 }}
+            className="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16"
+          >
             <img
               className="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex"
               src="img/img3.png"
@@ -130,7 +144,7 @@ const Story = () => {
                 Join us and experience the difference with Diet Master.
               </p>
             </div>
-          </div>
+          </motion.div>
           <div className="text-center">
             <Link
               to="/book-appointment"

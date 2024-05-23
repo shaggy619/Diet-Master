@@ -1,15 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeIn } from "./varients";
 
 const Hero = () => {
   return (
     <>
       <section className="bg-white mt-32 max-sm:mt-36">
         <div className="grid max-w-[90%] px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-          <div className="mr-auto place-self-center lg:col-span-7">
-            <h1 className="text-primary max-w-2xl mb-4 text-3xl font-bold tracking-tight leading-none md:text-4xl xl:text-5xl max-md:text-center">
+          <motion.div
+            variants={fadeIn("up", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: false, amount: 0.7 }}
+            className="mr-auto place-self-center lg:col-span-7"
+          >
+            <h2 className="text-primary max-w-2xl mb-4 text-3xl font-bold tracking-tight leading-none md:text-4xl xl:text-5xl max-md:text-center">
               Guiding You Towards a Healthier Lifestyle
-            </h1>
+            </h2>
             <p className="max-w-2xl mb-6 font-light text-gray-900 lg:mb-8 md:text-lg lg:text-xl ">
               At Diet Master Clinic, we provide personalized weight loss
               solutions tailored to your unique needs. Our expert dietitians are
@@ -41,9 +49,13 @@ const Hero = () => {
             >
               What We Do
             </Link>
-          </div>
+          </motion.div>
           <div className="max-lg:-order-1 max-lg:w-[80%] max-sm:w-full max-lg:mx-auto max-lg:pb-12 lg:mt-0 lg:col-span-5 lg:flex">
-            <svg
+            <motion.svg
+              variants={fadeIn("down", 0.2)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: false, amount: 0.7 }}
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               data-name="Layer 1"
@@ -989,7 +1001,7 @@ const Hero = () => {
                 transform="translate(-47.24 -58.63)"
                 fill="#5f22d9"
               />
-            </svg>
+            </motion.svg>
           </div>
         </div>
       </section>
