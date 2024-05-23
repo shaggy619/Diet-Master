@@ -11,10 +11,17 @@ const Footer = () => {
         <div className="container mx-auto px-4 max-w-[90%]">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h2 className="text-2xl font-bold mb-2">Diet Master</h2>
-              <p>
-                Your partner in achieving a healthier lifestyle through
-                personalized diet plans.
+              <Link className="inline-block">
+                <div className="flex items-center gap-1">
+                  <div className="mb-3 -ml-1">
+                    <img src="/img/logo.png" alt="" className="w-12 h-12" />
+                  </div>
+                  <h2 className="text-2xl font-bold mb-2">Diet Master</h2>
+                </div>
+              </Link>
+
+              <p className="-mt-1">
+                Your partner in achieving a healthier lifestyle.
               </p>
             </div>
             <div>
@@ -55,16 +62,32 @@ const Footer = () => {
               <p>Email: support@dietmaster.com</p>
               <p>Address: Ghorahi, Dang</p>
               <div className="flex space-x-3 pt-3 md:mt-0 items-center">
-                <a href="#" target="_blank" className=" text-2xl">
+                <a
+                  href="https://www.facebook.com/someaim.adhikari.1/"
+                  target="_blank"
+                  className=" text-2xl"
+                >
                   <FaFacebook />
                 </a>
-                <a href="#" target="_blank" className=" text-2xl">
+                <a
+                  href="https://twitter.com/SomeAim"
+                  target="_blank"
+                  className=" text-2xl"
+                >
                   <FaTwitter />
                 </a>
-                <a href="#" target="_blank" className=" text-2xl">
+                <a
+                  href="https://www.instagram.com/someaim1/"
+                  target="_blank"
+                  className=" text-2xl"
+                >
                   <FaInstagram />
                 </a>
-                <a href="#" target="_blank" className=" text-2xl">
+                <a
+                  href="https://www.youtube.com/channel/UCUtVNdBHoYaJ4JQtdEw8Ssg"
+                  target="_blank"
+                  className=" text-2xl"
+                >
                   <FaYoutube />
                 </a>
               </div>

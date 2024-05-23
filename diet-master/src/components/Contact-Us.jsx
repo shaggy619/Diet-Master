@@ -17,8 +17,8 @@ const Contact = () => {
           variants={fadeIn("down", 0.2)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: true, amount: 0.7 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-10 max-md:mb-8"
+          viewport={{ once: true, amount: 0.1 }}
+          className="text-3xl font-bold text-center mb-10 max-md:mb-8 max-md:mt-2"
         >
           Contact Us
         </motion.h2>
@@ -26,7 +26,7 @@ const Contact = () => {
           variants={fadeIn("up", 0.3)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.1 }}
           className="shadow border border-stroke p-12 rounded max-sm:px-8"
         >
           <div className="mb-5">

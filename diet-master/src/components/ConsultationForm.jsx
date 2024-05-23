@@ -40,8 +40,8 @@ const ConsultationForm = () => {
           variants={fadeIn("down", 0.2)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: true, amount: 0.7 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-10"
+          viewport={{ once: true, amount: 0.2 }}
+          className="text-3xl  font-bold text-center mb-10 max-md:mb-8 max-md:mt-2"
         >
           Book Appointment
         </motion.h2>

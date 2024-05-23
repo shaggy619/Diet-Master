@@ -28,10 +28,10 @@ const Pricing = () => {
             className="w-full px-4"
           >
             <div className="mx-auto mb-[60px] max-w-[510px] text-center">
-              <span className="mb-2 block text-lg font-semibold text-primary">
+              <span className="mb-2 block text-lg max-sm:text-base font-semibold text-primary">
                 Pricing Table
               </span>
-              <h2 className=" text-3xl md:text-4xl font-bold text-center mb-3 leading-[1.208] text-dark ">
+              <h2 className=" text-3xl max-sm:text-2xl font-bold text-center mb-3 leading-[1.208] text-dark ">
                 Our Pricing Plan
               </h2>
               <p className="text-base text-body-color dark:text-dark-6">
@@ -116,10 +116,10 @@ const PricingCard = ({
     <>
       <div className="px-4 md:w-1/2 lg:w-1/3">
         <div className="relative z-10 mb-10 overflow-hidden rounded-[10px] border-2 border-stroke bg-white px-6 py-10 shadow-pricing sm:p-12 lg:py-10 xl:p-[50px]  mx-auto ">
-          <span className="mb-3 block text-lg font-semibold text-primary">
+          <span className="mb-3 block text-lg max-sm:text-base font-semibold text-primary">
             {type}
           </span>
-          <h2 className="mb-5 text-[42px] font-bold text-dark">
+          <h2 className="mb-5 text-[42px] max-sm:text-[32px] font-bold text-dark">
             {price}
             <span className="text-base font-medium text-body-color">
               / {subscription}

@@ -28,7 +28,7 @@ const BulkRegistration = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.7 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-10 max-md:mb-8"
+          className="text-3xl font-bold text-center mb-10 max-md:mb-8 max-md:mt-2"
         >
           Bulk Employee Registration
         </motion.h2>

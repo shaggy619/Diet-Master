@@ -14,7 +14,7 @@ const Testimonial = () => {
             viewport={{ once: true, amount: 0.2 }}
             className="max-w-3xl mx-auto text-center pb-12 md:pb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 leading-[1.208] text-dark ">
+            <h2 className="text-3xl max-sm:text-2xl font-bold text-center mb-3 leading-[1.208] text-dark ">
               Trusted by over 1,000+ clients and companies all over the world
             </h2>
             <p className="text-base text-body-color  max-w-[510px] mx-auto">
@@ -301,7 +301,7 @@ const Testimonial = () => {
                   tools available are simply fantastic. I receive glowing
                   feedback constantly."
                 </blockquote>
-                <cite className="block font-bold text-lg not-italic mb-1 text-primary">
+                <cite className="block font-bold text-lg max-sm:text-base not-italic mb-1 text-primary">
                   Tedros Adhanom Ghebreyesus
                 </cite>
                 <div className="text-gray-600">

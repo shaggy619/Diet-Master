@@ -71,7 +71,7 @@ const Story = () => {
               }`}
             >
               <h2
-                className={`mb-4 text-3xl font-extrabold tracking-tight ${
+                className={`mb-4 text-3xl max-sm:text-2xl font-extrabold tracking-tight ${
                   isStandAlonePage ? "text-dark" : "text-white"
                 }`}
               >
@@ -120,7 +120,7 @@ const Story = () => {
               } `}
             >
               <h2
-                className={`mb-4 text-3xl font-extrabold tracking-tight ${
+                className={`mb-4 text-3xl max-sm:text-2xl font-extrabold tracking-tight ${
                   isStandAlonePage ? "text-dark" : "text-white"
                 }`}
               >
