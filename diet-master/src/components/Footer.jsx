@@ -11,10 +11,10 @@ const Footer = () => {
         <div className="container mx-auto px-4 max-w-[90%]">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <Link className="inline-block">
+              <Link to="/" className="inline-block">
                 <div className="flex items-center gap-1">
                   <div className="mb-3 -ml-1">
-                    <img src="/img/logo.png" alt="" className="w-12 h-12" />
+                    <img src="/img/logo.png" alt="logo" className="w-12 h-12" />
                   </div>
                   <h2 className="text-2xl font-bold mb-2">Diet Master</h2>
                 </div>

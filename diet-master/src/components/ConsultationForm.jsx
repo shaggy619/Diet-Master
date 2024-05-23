@@ -1,18 +1,16 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "./varients";
+import { PlanContext } from "./PlanContext";
 
 const ConsultationForm = () => {
-  const [plan, setPlan] = useState("One Time");
-  const [price, setPrice] = useState("$56");
+  const { selectedPlan } = useContext(PlanContext);
+  const [plan, setPlan] = useState(selectedPlan);
+  const [price, setPrice] = useState("");
 
-  const handlePlanChange = (e) => {
-    const selectedPlan = e.target.value;
-    setPlan(selectedPlan);
-
-    switch (selectedPlan) {
+  useEffect(() => {
+    switch (plan) {
       case "One Time":
         setPrice("$19");
         break;
@@ -23,8 +21,13 @@ const ConsultationForm = () => {
         setPrice("$49");
         break;
       default:
-        setPrice("$16");
+        setPrice("$19");
     }
+  }, [plan]);
+
+  const handlePlanChange = (e) => {
+    const selectedPlan = e.target.value;
+    setPlan(selectedPlan);
   };
 
   const location = useLocation();
@@ -91,7 +94,7 @@ const ConsultationForm = () => {
                     Price
                   </label>
                   <input
-                    type="name"
+                    type="text"
                     name="price"
                     id="price"
                     value={price}

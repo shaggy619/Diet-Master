@@ -44,7 +44,7 @@ const Story = () => {
         </svg>
         <span
           className={`text-base font-medium leading-tight ${
-            isStandAlonePage ? "text-dark" : "text-white"
+            isStandAlonePage ? "text-gray-900" : "text-white"
           }`}
         >
           {feature}
@@ -55,7 +55,7 @@ const Story = () => {
   return (
     <div>
       <section
-        className={`${isStandAlonePage ? "bg-white pt-36" : "bg-primary"} `}
+        className={`${isStandAlonePage ? "bg-white pt-28" : "bg-primary"} `}
       >
         <div className="max-w-[90%] px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 ">
           <motion.div
@@ -67,16 +67,16 @@ const Story = () => {
           >
             <div
               className={`sm:text-lg ${
-                isStandAlonePage ? "text-dark" : "text-gray-200"
+                isStandAlonePage ? "text-gray-900" : "text-gray-200"
               }`}
             >
-              <h2
+              <h3
                 className={`mb-4 text-3xl max-sm:text-2xl font-extrabold tracking-tight ${
-                  isStandAlonePage ? "text-dark" : "text-white"
+                  isStandAlonePage ? "text-gray-900" : "text-white"
                 }`}
               >
                 Weight loss program that works
-              </h2>
+              </h3>
               <p className="mb-8 font-light lg:text-xl">
                 Diet Master offers a proven, effective weight loss program
                 designed to help you shed pounds and keep them off. Diet Master
@@ -116,16 +116,16 @@ const Story = () => {
             />
             <div
               className={`sm:text-lg ${
-                isStandAlonePage ? "text-dark" : "text-gray-200"
+                isStandAlonePage ? "text-gray-900" : "text-gray-200"
               } `}
             >
-              <h2
+              <h3
                 className={`mb-4 text-3xl max-sm:text-2xl font-extrabold tracking-tight ${
-                  isStandAlonePage ? "text-dark" : "text-white"
+                  isStandAlonePage ? "text-gray-900" : "text-white"
                 }`}
               >
                 Your Partner in Sustainable Weight Loss
-              </h2>
+              </h3>
               <p className="mb-8 font-light lg:text-xl">
                 Diet Master goes beyond traditional weight loss programs and
                 offers the solutions that aligns with your problem. Our

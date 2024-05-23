@@ -13,31 +13,42 @@ import Contact from "./components/Contact-Us";
 import ErrorPage from "./components/ErrorPage";
 import DietChart from "./components/DietChart";
 import Faq from "./components/Faq";
+import { PlanProvider } from "./components/PlanContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
+    <PlanProvider>
+      <BrowserRouter>
+        <Header />
 
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/doctor-review" element={<Doctor />} />
-        <Route exact path="/book-appointment" element={<ConsultationForm />} />
-        <Route exact path="/admin" element={<BulkRegistration />} />
-        <Route exact path="/pricing" element={<Pricing />} />
-        <Route exact path="/weight-loss" element={<Story />} />
-        <Route exact path="/healthy-body-diet-chart" element={<DietChart />} />
-        <Route
-          exact
-          path="/medical-diet-chart"
-          element={<MedicalDietChart />}
-        />
-        <Route exact path="/contact-us" element={<Contact />} />
-        <Route exact path="/faq" element={<Faq />} />
-        <Route exact path="*" element={<ErrorPage />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/doctor-review" element={<Doctor />} />
+          <Route
+            exact
+            path="/book-appointment"
+            element={<ConsultationForm />}
+          />
+          <Route exact path="/admin" element={<BulkRegistration />} />
+          <Route exact path="/pricing" element={<Pricing />} />
+          <Route exact path="/weight-loss" element={<Story />} />
+          <Route
+            exact
+            path="/healthy-body-diet-chart"
+            element={<DietChart />}
+          />
+          <Route
+            exact
+            path="/medical-diet-chart"
+            element={<MedicalDietChart />}
+          />
+          <Route exact path="/contact-us" element={<Contact />} />
+          <Route exact path="/faq" element={<Faq />} />
+          <Route exact path="*" element={<ErrorPage />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </PlanProvider>
   );
 }
 
