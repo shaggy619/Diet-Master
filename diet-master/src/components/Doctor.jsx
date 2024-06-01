@@ -1,17 +1,53 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "./varients";
 
 const Doctor = () => {
+  const [formValues, setFormValues] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    review: "",
+  });
+  const [errors, setErrors] = useState({});
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const validate = () => {
+    const errors = {};
+    if (!formValues.name) errors.name = "Full Name is required";
+    if (!formValues.phone) errors.phone = "Phone Number is required";
+    if (!formValues.email) {
+      errors.email = "Email Address is required";
+    } else if (!/\S+@\S+\.\S+/.test(formValues.email)) {
+      errors.email = "Email Address is invalid";
+    }
+    if (!formValues.review) errors.review = "Review message are required";
+    return errors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      // Submit form
+      console.log("Form submitted successfully", formValues);
+    }
+  };
+
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
   return (
-    <div className="flex items-center justify-center p-12 pt-48 max-md:pt-40 max-sm:px-6 ">
+    <div className="flex items-center justify-center p-12 pt-48 max-md:pt-40 max-sm:px-6">
       <div className="mx-auto w-full max-w-[550px] bg-white">
         <motion.h2
           variants={fadeIn("down", 0.2)}
@@ -23,6 +59,7 @@ const Doctor = () => {
           Register Patient for Review
         </motion.h2>
         <motion.form
+          onSubmit={handleSubmit}
           variants={fadeIn("up", 0.3)}
           initial="hidden"
           whileInView={"show"}
@@ -43,9 +80,16 @@ const Doctor = () => {
               type="text"
               name="name"
               id="name"
+              value={formValues.name}
+              onChange={handleInputChange}
               placeholder="Enter Full Name"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.name ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-2">{errors.name}</p>
+            )}
           </div>
           <div className="mb-5">
             <label
@@ -58,9 +102,16 @@ const Doctor = () => {
               type="text"
               name="phone"
               id="phone"
+              value={formValues.phone}
+              onChange={handleInputChange}
               placeholder="Enter phone number"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.phone ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-2">{errors.phone}</p>
+            )}
           </div>
           <div className="mb-5">
             <label
@@ -73,9 +124,16 @@ const Doctor = () => {
               type="email"
               name="email"
               id="email"
+              value={formValues.email}
+              onChange={handleInputChange}
               placeholder="Enter email"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.email ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-2">{errors.email}</p>
+            )}
           </div>
           <div className="mb-5">
             <label
@@ -86,13 +144,24 @@ const Doctor = () => {
             </label>
             <textarea
               id="review"
+              name="review"
+              value={formValues.review}
+              onChange={handleInputChange}
               placeholder="Diet Plan and Review"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.review ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.review && (
+              <p className="text-red-500 text-sm mt-2">{errors.review}</p>
+            )}
           </div>
 
           <div>
-            <button className="hover:bg-secondary w-full rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none">
+            <button
+              type="submit"
+              className="hover:bg-secondary w-full rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none"
+            >
               Register Patient
             </button>
           </div>

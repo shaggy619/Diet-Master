@@ -8,6 +8,18 @@ const ConsultationForm = () => {
   const { selectedPlan } = useContext(PlanContext);
   const [plan, setPlan] = useState(selectedPlan);
   const [price, setPrice] = useState("");
+  const [formValues, setFormValues] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    date: "",
+    time: "",
+    area: "",
+    city: "",
+    state: "",
+    postCode: "",
+  });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     switch (plan) {
@@ -30,8 +42,41 @@ const ConsultationForm = () => {
     setPlan(selectedPlan);
   };
 
-  const location = useLocation();
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
 
+  const validate = () => {
+    const errors = {};
+    if (!formValues.name) errors.name = "Full Name is required";
+    if (!formValues.phone) errors.phone = "Phone Number is required";
+    if (!formValues.email) {
+      errors.email = "Email Address is required";
+    } else if (!/\S+@\S+\.\S+/.test(formValues.email)) {
+      errors.email = "Email Address is invalid";
+    }
+    if (!formValues.date) errors.date = "Date is required";
+    if (!formValues.time) errors.time = "Time is required";
+    if (!formValues.area) errors.area = "Area is required";
+    if (!formValues.city) errors.city = "City is required";
+    if (!formValues.state) errors.state = "State is required";
+    if (!formValues.postCode) errors.postCode = "Post Code is required";
+    return errors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      // Submit form
+      console.log("Form submitted successfully", formValues);
+    }
+  };
+
+  const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -44,11 +89,12 @@ const ConsultationForm = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.2 }}
-          className="text-3xl  font-bold text-center mb-10 max-md:mb-8 max-md:mt-2"
+          className="text-3xl font-bold text-center mb-10 max-md:mb-8 max-md:mt-2"
         >
           Book Appointment
         </motion.h2>
         <motion.form
+          onSubmit={handleSubmit}
           variants={fadeIn("up", 0.3)}
           initial="hidden"
           whileInView={"show"}
@@ -119,9 +165,16 @@ const ConsultationForm = () => {
               type="text"
               name="name"
               id="name"
+              value={formValues.name}
+              onChange={handleInputChange}
               placeholder="Full Name"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.name ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-2">{errors.name}</p>
+            )}
           </div>
           <div className="mb-5">
             <label
@@ -134,9 +187,16 @@ const ConsultationForm = () => {
               type="text"
               name="phone"
               id="phone"
+              value={formValues.phone}
+              onChange={handleInputChange}
               placeholder="Enter your phone number"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.phone ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-2">{errors.phone}</p>
+            )}
           </div>
           <div className="mb-5">
             <label
@@ -149,9 +209,16 @@ const ConsultationForm = () => {
               type="email"
               name="email"
               id="email"
+              value={formValues.email}
+              onChange={handleInputChange}
               placeholder="Enter your email"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.email ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-2">{errors.email}</p>
+            )}
           </div>
           <div className="-mx-3 flex flex-wrap">
             <div className="w-full px-3 sm:w-1/2">
@@ -166,8 +233,15 @@ const ConsultationForm = () => {
                   type="date"
                   name="date"
                   id="date"
-                  className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+                  value={formValues.date}
+                  onChange={handleInputChange}
+                  className={`w-full rounded-md border ${
+                    errors.date ? "border-red-500" : "border-gray-200"
+                  } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
                 />
+                {errors.date && (
+                  <p className="text-red-500 text-sm mt-2">{errors.date}</p>
+                )}
               </div>
             </div>
             <div className="w-full px-3 sm:w-1/2">
@@ -182,8 +256,15 @@ const ConsultationForm = () => {
                   type="time"
                   name="time"
                   id="time"
-                  className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+                  value={formValues.time}
+                  onChange={handleInputChange}
+                  className={`w-full rounded-md border ${
+                    errors.time ? "border-red-500" : "border-gray-200"
+                  } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
                 />
+                {errors.time && (
+                  <p className="text-red-500 text-sm mt-2">{errors.time}</p>
+                )}
               </div>
             </div>
           </div>
@@ -199,9 +280,16 @@ const ConsultationForm = () => {
                     type="text"
                     name="area"
                     id="area"
+                    value={formValues.area}
+                    onChange={handleInputChange}
                     placeholder="Enter area"
-                    className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+                    className={`w-full rounded-md border ${
+                      errors.area ? "border-red-500" : "border-gray-200"
+                    } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
                   />
+                  {errors.area && (
+                    <p className="text-red-500 text-sm mt-2">{errors.area}</p>
+                  )}
                 </div>
               </div>
               <div className="w-full px-3 sm:w-1/2">
@@ -210,9 +298,16 @@ const ConsultationForm = () => {
                     type="text"
                     name="city"
                     id="city"
+                    value={formValues.city}
+                    onChange={handleInputChange}
                     placeholder="Enter city"
-                    className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base  text-gray-700 outline-none focus:border-primary focus:shadow-md"
+                    className={`w-full rounded-md border ${
+                      errors.city ? "border-red-500" : "border-gray-200"
+                    } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
                   />
+                  {errors.city && (
+                    <p className="text-red-500 text-sm mt-2">{errors.city}</p>
+                  )}
                 </div>
               </div>
               <div className="w-full px-3 sm:w-1/2">
@@ -221,27 +316,46 @@ const ConsultationForm = () => {
                     type="text"
                     name="state"
                     id="state"
+                    value={formValues.state}
+                    onChange={handleInputChange}
                     placeholder="Enter state"
-                    className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+                    className={`w-full rounded-md border ${
+                      errors.state ? "border-red-500" : "border-gray-200"
+                    } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
                   />
+                  {errors.state && (
+                    <p className="text-red-500 text-sm mt-2">{errors.state}</p>
+                  )}
                 </div>
               </div>
               <div className="w-full px-3 sm:w-1/2">
                 <div className="mb-5">
                   <input
                     type="text"
-                    name="post-code"
-                    id="post-code"
+                    name="postCode"
+                    id="postCode"
+                    value={formValues.postCode}
+                    onChange={handleInputChange}
                     placeholder="Post Code"
-                    className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+                    className={`w-full rounded-md border ${
+                      errors.postCode ? "border-red-500" : "border-gray-200"
+                    } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
                   />
+                  {errors.postCode && (
+                    <p className="text-red-500 text-sm mt-2">
+                      {errors.postCode}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
           </div>
 
           <div>
-            <button className="hover:bg-secondary w-full rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none">
+            <button
+              type="submit"
+              className="hover:bg-secondary w-full rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none"
+            >
               Book Appointment
             </button>
           </div>
