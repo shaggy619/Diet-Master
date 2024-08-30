@@ -96,18 +96,21 @@ const Header = () => {
             <Link to="/contact-us" className="text-gray-800 hover:text-primary">
               Contact Us
             </Link>
+            <Link to="/about-us" className="text-gray-800 hover:text-primary">
+              About Us
+            </Link>
             <Link
               to="/book-appointment"
               className="text-white border border-transparent bg-primary px-6 py-3 rounded hover:bg-secondary"
             >
               Book Appointment
             </Link>
-            <Link
+            {/* <Link
               to="/doctor-review"
               className="text-primary border border-primary bg-transparent px-6 py-3 rounded transition hover:border-primary hover:bg-primary hover:text-white"
             >
               Register Patient
-            </Link>
+            </Link> */}
           </div>
           <button
             className="lg:hidden text-gray-800 focus:outline-none"
@@ -188,6 +191,13 @@ const Header = () => {
           >
             Contact Us
           </Link>
+          <Link
+            to="/about-us"
+            className="block text-gray-800 hover:text-primary p-4"
+            onClick={closeMenu}
+          >
+            About Us
+          </Link>
           <div className="p-4 pt-8">
             <Link
               to="/book-appointment"
@@ -198,13 +208,13 @@ const Header = () => {
             </Link>
           </div>
           <div className="p-4 pt-8">
-            <Link
+            {/* <Link
               to="/doctor-review"
               className="text-primary border border-primary bg-white px-6 py-3 rounded hover:bg-secondary"
               onClick={closeMenu}
             >
               Register Patient
-            </Link>
+            </Link> */}
           </div>
         </div>
       </nav>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 import { fadeIn } from "./varients";
 
 const Contact = () => {
@@ -43,38 +44,63 @@ const Contact = () => {
     return errors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      console.log("Form submitted successfully", formValues);
+      // Append access key to the form data
+      const formData = {
+        ...formValues,
+        access_key: "331f85d3-c3bc-49ec-bcc1-1a84cac0f853",
+      };
+
+      const json = JSON.stringify(formData);
+
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: json,
+        }).then((res) => res.json());
+
+        if (res.success) {
+          Swal.fire({
+            title: "Success!",
+            text: "Form submitted successfully!",
+            icon: "success",
+          });
+
+          // Clear form after successful submission
+          setFormValues({
+            name: "",
+            phone: "",
+            email: "",
+            message: "",
+          });
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: "Form submission failed.",
+            icon: "error",
+          });
+        }
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          text: "An error occurred while submitting the form.",
+          icon: "error",
+        });
+      }
     }
   };
 
   return (
     <div className="relative flex items-center justify-center p-12 pt-48 max-md:pt-40 max-sm:px-6">
-      <div className="absolute inset-0 overflow-hidden">
-        <svg
-          className="absolute top-10 left-0 transform -translate-x-1/2 -translate-y-1/2"
-          width="600"
-          height="600"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="300" cy="300" r="300" fill="#3b82f6" fillOpacity="0.1" />
-        </svg>
-        <svg
-          className="absolute bottom-0 right-0 transform translate-x-1/2 translate-y-1/2"
-          width="500"
-          height="500"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="250" cy="250" r="250" fill="#3d52a0" fillOpacity="0.1" />
-        </svg>
-      </div>
       <div className="relative mx-auto w-full max-w-[550px]">
         <motion.h2
           variants={fadeIn("down", 0.2)}
